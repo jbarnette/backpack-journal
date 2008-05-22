@@ -6,7 +6,6 @@
 
 Make journal and status entries in 37signals' Backpack.
 
-
 == FEATURES/PROBLEMS:
 
 * This is lunchcode. Tread lightly.
