@@ -1,4 +1,3 @@
-(in /Users/jbarnette/work/backpack-journal)
 Gem::Specification.new do |s|
   s.name = %q{backpack-journal}
   s.version = "1.0.0"
@@ -13,7 +12,7 @@ Gem::Specification.new do |s|
   s.email = ["jbarnette@rubyforge.org"]
   s.executables = ["backpack-journal"]
   s.extra_rdoc_files = ["History.txt", "Manifest.txt", "README.txt"]
-  s.files = ["History.txt", "Manifest.txt", "README.rdoc", "README.txt", "Rakefile", "bin/backpack-journal", "lib/backpack-journal/version.rb", "test/test_backpack-journal.rb"]
+  s.files = ["History.txt", "Manifest.txt", "README.txt", "Rakefile", "backpack-journal.gemspec", "bin/backpack-journal", "lib/backpack-journal/version.rb", "test/test_backpack-journal.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/jbarnette/backpack-journal}
   s.rdoc_options = ["--main", "README.txt"]

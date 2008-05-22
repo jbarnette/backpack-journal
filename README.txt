@@ -13,6 +13,7 @@ Make journal and status entries in 37signals' Backpack.
 
 == SYNOPSIS:
 
+  # NOTE: I usually alias to 'bpj'
   backpack-journal setup <user-id> <user-token>
   
   backpack-journal status "Messing with backpack-journal!"
@@ -21,7 +22,7 @@ Make journal and status entries in 37signals' Backpack.
 
 == INSTALL:
 
-  sudo gem install backpack-journal
+  sudo gem install jbarnette-backpack-journal --source=http://gems.github.com
 
 == LICENSE:
 
