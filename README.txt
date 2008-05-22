@@ -13,15 +13,21 @@ Make journal and status entries in 37signals' Backpack.
 
 == SYNOPSIS:
 
-  # NOTE: I usually alias to 'bpj'
-  backpack-journal setup <user-id> <user-token>
+  # user-id is your NUMERIC user ID. Check your URL, e.g.,
+  # http://something.backpackit.com/users/31415926/edit
   
+  backpack-journal setup <user-id> <api-token>
+  
+  # I've aliased 'bpj', 'cause I'm lazy.
   backpack-journal status "Messing with backpack-journal!"
   
   backpack-journal entry "Got my daily dose of awesome."
 
 == INSTALL:
 
+  # NOTE: because of gem weirdness, you may have to manually install
+  # backpack-journal's dependencies, thor and hoe.
+  
   sudo gem install jbarnette-backpack-journal --source=http://gems.github.com
 
 == LICENSE:
