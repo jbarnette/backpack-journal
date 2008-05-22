@@ -1,0 +1,76 @@
+#!/usr/bin/env ruby
+
+require "rubygems"
+require "pathname"
+require "thor"
+
+require "net/http"
+require "uri"
+
+module BackpackJournal
+  class CLI < Thor
+    IDENTITY = Pathname.new(File.expand_path("~/.backpack-journal"))
+    
+    desc "setup USER_ID TOKEN", "set up your Backpack identity" 
+    def setup(user_id, token)
+      save_identity(user_id, token)
+    end
+    
+    desc "status MESSAGE", "set your current status"
+    def status(message)
+      user_id, token = load_identity
+
+      user_id, token = load_identity
+      
+      url = URI.parse("http://adready.backpackit.com/users/#{user_id}/status.xml")
+
+      body =<<-END
+        <request>
+          <token>#{token}</token>
+          <status>
+            <message>#{message}</message>
+          </status>
+        </request>
+      END
+
+      request = Net::HTTP::Put.new(url.path)
+      request.body = body.strip
+      request.set_content_type("application/xml")
+      response = Net::HTTP.new(url.host, url.port).start { |h| h.request(request) }
+    end
+    
+    desc "entry MESSAGE", "add a journal entry"
+    def entry(message)
+      user_id, token = load_identity
+      
+      url = URI.parse("http://adready.backpackit.com/users/#{user_id}/journal_entries.xml")
+
+      body =<<-END
+        <request>
+          <token>#{token}</token>
+          <journal-entry>
+            <body>#{message}</body>
+          </journal-entry>
+        </request>
+      END
+
+      request = Net::HTTP::Post.new(url.path)
+      request.body = body.strip
+      request.set_content_type("application/xml")
+      response = Net::HTTP.new(url.host, url.port).start { |h| h.request(request) }
+    end
+    
+    private
+    
+    def save_identity(user_id, token)
+      IDENTITY.open("w") { |i| i.write("#{user_id},#{token}") }
+    end
+    
+    def load_identity
+      abort("No identity: run backpack-journal setup") unless IDENTITY.exist?
+      IDENTITY.read.split(",")
+    end
+  end
+end
+
+BackpackJournal::CLI.start

@@ -1,0 +1,8 @@
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+bin/backpack-journal
+lib/backpack-journal.rb
+lib/backpack-journal/version.rb
+test/test_backpack-journal.rb
