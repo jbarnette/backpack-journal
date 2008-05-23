@@ -30,112 +30,7 @@ require 'rbconfig'
 require 'rubyforge'
 require 'yaml'
 
-##
-# hoe - a tool to help rake
-#
-# Hoe is a simple rake/rubygems helper for project Rakefiles. It
-# generates all the usual tasks for projects including rdoc generation,
-# testing, packaging, and deployment.
-#
-# == Using Hoe
-#
-# === Basics
-#
-# Use this as a minimal starting point:
-#
-#   require 'hoe'
-#
-#   Hoe.new("project_name", '1.0.0') do |p|
-#     p.rubyforge_name = "rf_project"
-#     # add other details here
-#   end
-#
-#   # add other tasks here
-#
-# === Tasks Provided:
-#
-# announce::       Create news email file and post to rubyforge.
-# audit::          Run ZenTest against the package.
-# check_manifest:: Verify the manifest.
-# clean::          Clean up all the extras.
-# config_hoe::     Create a fresh ~/.hoerc file.
-# debug_gem::      Show information about the gem.
-# default::        Run the default tasks.
-# docs::           Build the docs HTML Files
-# email::          Generate email announcement file.
-# gem::            Build the gem file hoe-1.5.0.gem
-# generate_key::   Generate a key for signing your gems.
-# install_gem::    Install the package as a gem.
-# multi::          Run the test suite using multiruby.
-# package::        Build all the packages
-# post_blog::      Post announcement to blog.
-# post_news::      Post announcement to rubyforge.
-# publish_docs::   Publish RDoc to RubyForge.
-# release::        Package and upload the release to rubyforge.
-# ridocs::         Generate ri locally for testing.
-# test::           Run the test suite.
-# test_deps::      Show which test files fail when run alone.
-#
-# === Extra Configuration Options:
-#
-# Run +config_hoe+ to generate a new ~/.hoerc file. The file is a
-# YAML formatted config file with the following settings:
-#
-# exclude::             A regular expression of files to exclude from
-#                       +check_manifest+.
-# publish_on_announce:: Run +publish_docs+ when you run +release+.
-# signing_key_file::    Signs your gems with this private key.
-# signing_cert_file::   Signs your gem with this certificate.
-# blogs::               An array of hashes of blog settings.
-#
-# Run +config_hoe+ and see ~/.hoerc for examples.
-#
-# === Signing Gems:
-#
-# Run the 'generate_key' task.  This will:
-#
-# 1. Configure your ~/.hoerc.
-# 2. Generate a signing key and certificate.
-# 3. Install the private key and public certificate files into ~/.gem.
-# 4. Upload the certificate to RubyForge.
-#
-# Hoe will now generate signed gems when the package task is run.  If you have
-# multiple machines you build gems on, be sure to install your key and
-# certificate on each machine.
-#
-# Keep your private key secret!  Keep your private key safe!
-#
-# To make sure your gems are signed run:
-#
-#   rake package; tar tf pkg/yourproject-1.2.3.gem
-#
-# If your gem is signed you will see:
-#
-#   data.tar.gz
-#   data.tar.gz.sig
-#   metadata.gz
-#   metadata.gz.sig
-#
-# === Platform awareness
-#
-# Hoe allows bundling of pre-compiled extensions in the +package+ task.
-#
-# To create a package for your current platform:
-#
-#   rake package INLINE=1
-#
-# This will force Hoe analize your +Inline+ already compiled
-# extensions and include them in your gem.
-#
-# If somehow you need to force a specific platform:
-#
-#   rake package INLINE=1 FORCE_PLATFORM=mswin32
-#
-# This will set the +Gem::Specification+ platform to the one indicated in
-# +FORCE_PLATFORM+ (instead of default Gem::Platform::CURRENT)
-#
-
-class Hoe
+class Hoe #:nodoc:
   VERSION = '1.5.3'
 
   ruby_prefix = Config::CONFIG['prefix']
@@ -333,7 +228,7 @@ class Hoe
     self.multiruby_skip = []
     self.need_tar = true
     self.need_zip = false
-    self.rdoc_pattern = /^(lib|bin|ext)|txt$/
+    self.rdoc_pattern = /^(lib|bin|ext)|(rdoc|txt)$/
     self.remote_rdoc_dir = name
     self.rsync_args = '-av --delete'
     self.rubyforge_name = name.downcase
@@ -472,7 +367,7 @@ class Hoe
       s.require_paths = dirs unless dirs.empty?
 
       s.rdoc_options = ['--main', 'README.rdoc']
-      s.extra_rdoc_files = s.files.grep(/txt$/)
+      s.extra_rdoc_files = s.files.grep(/(txt|rdoc)$/)
       s.has_rdoc = true
 
       s.post_install_message = post_install_message
@@ -591,7 +486,7 @@ class Hoe
       rd.options << '-d' if RUBY_PLATFORM !~ /win32/ and `which dot` =~ /\/dot/ and not ENV['NODOT']
       rd.rdoc_dir = 'doc'
       files = spec.files.grep(rdoc_pattern)
-      files -= ['MANIFEST']
+      files -= ['MANIFEST', 'lib/hoe.rb']
       rd.rdoc_files.push(*files)
 
       title = "#{name}-#{version} Documentation"

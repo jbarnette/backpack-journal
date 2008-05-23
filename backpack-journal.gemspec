@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{backpack-journal}
-  s.version = "1.0.1"
+  s.version = "1.0.2"
 
   s.specification_version = 2 if s.respond_to? :specification_version=
 
@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.description = %q{Make journal and status entries in 37signals' Backpack.}
   s.email = ["jbarnette@rubyforge.org"]
   s.executables = ["backpack-journal"]
+  s.extra_rdoc_files = ["README.rdoc"]
   s.files = ["CHANGELOG", "MANIFEST", "README.rdoc", "Rakefile", "backpack-journal.gemspec", "bin/backpack-journal", "lib/backpack-journal/version.rb", "lib/hoe.rb", "test/test_backpack-journal.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/jbarnette/backpack-journal}
