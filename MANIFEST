@@ -1,8 +1,9 @@
-History.txt
-Manifest.txt
-README.txt
+CHANGELOG
+MANIFEST
+README.rdoc
 Rakefile
 backpack-journal.gemspec
 bin/backpack-journal
 lib/backpack-journal/version.rb
+lib/hoe.rb
 test/test_backpack-journal.rb
