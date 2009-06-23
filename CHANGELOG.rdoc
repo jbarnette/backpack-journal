@@ -1,7 +1,8 @@
-=== UNRELEASED
+=== 1.1.0 / 2009-06-22
 
-* Moved to my standard project structure.
-* Switched to new Hoe.
+* Publish as a Gem.
+* Standardize directory structure.
+* Switch to new Hoe.
 
 === 1.0.2 / 2008-05-23
 

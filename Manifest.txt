@@ -2,6 +2,5 @@ CHANGELOG.rdoc
 Manifest.txt
 README.rdoc
 Rakefile
-backpack-journal.gemspec
 bin/backpack-journal
 lib/backpack-journal.rb

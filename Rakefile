@@ -7,6 +7,7 @@ Hoe.spec "backpack-journal" do
   self.extra_rdoc_files = FileList["*.rdoc"]
   self.history_file     = "CHANGELOG.rdoc"
   self.readme_file      = "README.rdoc"
+  self.rubyforge_name   = "backpackjournal"
 
   extra_deps << ["thor", ">= 0.9.7"]
 end
