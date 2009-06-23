@@ -1,6 +1,8 @@
 require "rubygems"
 require "hoe"
 
+Hoe.plugin :git
+
 Hoe.spec "backpack-journal" do
   developer "John Barnette", "jbarnette@rubyforge.org"
 
