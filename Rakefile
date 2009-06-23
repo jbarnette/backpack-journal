@@ -1,11 +1,12 @@
-require "./lib/hoe.rb"
-require "./lib/backpack-journal/version.rb"
+require "rubygems"
+require "hoe"
 
-Hoe.new("backpack-journal", BackpackJournal::VERSION) do |p|
-  p.developer("John Barnette", "jbarnette@rubyforge.org")
-  p.extra_deps << ["wycats-thor", ">= 0.9.2"]
-end
+Hoe.spec "backpack-journal" do
+  developer "John Barnette", "jbarnette@rubyforge.org"
 
-task :gemspec do
-  
+  self.extra_rdoc_files = FileList["*.rdoc"]
+  self.history_file     = "CHANGELOG.rdoc"
+  self.readme_file      = "README.rdoc"
+
+  extra_deps << ["thor", ">= 0.9.7"]
 end

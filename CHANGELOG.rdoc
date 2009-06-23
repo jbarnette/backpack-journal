@@ -1,3 +1,8 @@
+=== UNRELEASED
+
+* Moved to my standard project structure.
+* Switched to new Hoe.
+
 === 1.0.2 / 2008-05-23
 
 * Unbreak RDoc generation.
@@ -8,7 +13,4 @@
 
 === 1.0.0 / 2008-05-22
 
-* 1 major enhancement
-
-  * Birthday!
-
+* Birthday!

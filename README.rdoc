@@ -1,36 +1,30 @@
-= backpack-journal
+= Backpack Journal
 
 * http://github.com/jbarnette/backpack-journal
 
-== DESCRIPTION:
+== Description
 
-Make journal and status entries in 37signals' Backpack.
+Make journal and status entries in 37signals' Backpack. This was a
+lunchtime project, and it's been dormant for a while. I'm not even
+sure if this code works. If you happen to use this and want to take
+over as maintainer, drop me a line!
 
-== FEATURES/PROBLEMS:
+== Examples
 
-* This is lunchcode. Tread lightly.
+    # user-id is your NUMERIC user ID. Check your URL, e.g.,
+    # http://something.backpackit.com/users/31415926/edit
 
-== SYNOPSIS:
+    $ backpack-journal setup <user-id> <api-token>
+    $ backpack-journal status "Messing with backpack-journal!"
+    $ backpack-journal entry "Got my daily dose of awesome."
 
-  # user-id is your NUMERIC user ID. Check your URL, e.g.,
-  # http://something.backpackit.com/users/31415926/edit
-  
-  backpack-journal setup <user-id> <api-token>
-  
-  # I've aliased 'bpj', 'cause I'm lazy.
-  backpack-journal status "Messing with backpack-journal!"
-  
-  backpack-journal entry "Got my daily dose of awesome."
+== Installation
 
-== INSTALL:
+  $ gem install backpack-journal
 
-  sudo gem install jbarnette-backpack-journal --source=http://gems.github.com
+== License
 
-== LICENSE:
-
-(The MIT License)
-
-Copyright (c) 2008 John Barnette <jbarnette@rubyforge.org>
+Copyright 2008 John Barnette <jbarnette@rubyforge.org>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
